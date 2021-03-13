@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +9,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    "main": [
+    main: [
       './src/index.js',
       './src/scss/style.scss',
     ],
@@ -30,9 +29,9 @@ module.exports = {
     modules: ['node_modules', './src'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      'config': path.resolve(__dirname, '..', './src/config'),
-      'util': path.resolve(__dirname, '..', './src/util'),
-      'const': path.resolve(__dirname, '..', './src/const'),
+      config: path.resolve(__dirname, '..', './src/config'),
+      util: path.resolve(__dirname, '..', './src/util'),
+      const: path.resolve(__dirname, '..', './src/const'),
     },
   },
   module: {
@@ -55,11 +54,11 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|png|gif|eot|otf|woff|woff2|ttf|svg)$/,
-        use: ['file-loader']
+        use: ['file-loader'],
       },
       {
         test: /\.(yml|yaml)$/,
-        use: ['json-loader', 'yaml-loader']
+        use: ['json-loader', 'yaml-loader'],
       },
     ],
   },
@@ -77,7 +76,7 @@ module.exports = {
     new CleanWebpackPlugin({
       dry: false,
       verbose: true,
-      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '..', 'dist/*')]
+      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '..', 'dist/*')],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
@@ -97,6 +96,5 @@ module.exports = {
       template: path.resolve(__dirname, '../src/index.html'),
       title: 'JS Project',
     }),
-    new webpack.NamedModulesPlugin(),
   ],
 };

@@ -11,7 +11,7 @@ const PORT = process.env.npm_config_port || 3001;
 module.exports = {
   mode: 'development',
   entry: {
-    "main": [
+    main: [
       './src/index.js',
       './src/scss/style.scss',
     ],
@@ -33,10 +33,10 @@ module.exports = {
     modules: ['node_modules', './src'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      'config': path.resolve(__dirname, '..', './src/config'),
-      'util': path.resolve(__dirname, '..', './src/util'),
-      'const': path.resolve(__dirname, '..', './src/const'),
-    }
+      config: path.resolve(__dirname, '..', './src/config'),
+      util: path.resolve(__dirname, '..', './src/util'),
+      const: path.resolve(__dirname, '..', './src/const'),
+    },
   },
   module: {
     rules: [
@@ -60,14 +60,14 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-            }
+            },
           },
           {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -76,7 +76,7 @@ module.exports = {
       },
       {
         test: /\.(yml|yaml)$/,
-        use: ['json-loader', 'yaml-loader']
+        use: ['json-loader', 'yaml-loader'],
       },
     ],
   },
@@ -110,6 +110,5 @@ module.exports = {
       title: 'JS Project',
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
   ],
 };
